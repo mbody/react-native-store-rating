@@ -66,24 +66,24 @@ class RateModal extends react_1.Component {
     }
     renderRatingView() {
         const { title, buttonContainer, button, buttonCancel, buttonCancelText } = RateModal_1.RateModalStyles;
-        const { starLabels, isVisible, cancelBtnText, totalStarCount, defaultStars, rateBtnText, modalTitle, rateBtnStyle, cancelBtnStyle } = this.props;
+        const { starLabels, isVisible, cancelBtnText, totalStarCount, defaultStars, rateBtnText, modalTitle, primaryBtnStyle, cancelBtnStyle } = this.props;
         return (react_1.default.createElement(react_1.default.Fragment, null,
             react_1.default.createElement(react_native_1.Text, { style: title }, modalTitle),
             react_1.default.createElement(react_native_ratings_1.AirbnbRating, { count: totalStarCount, defaultRating: defaultStars, showRating: isVisible, reviews: starLabels, onFinishRating: (e) => this.onStarSelected(e) }),
             react_1.default.createElement(react_native_1.View, { style: buttonContainer },
                 react_1.default.createElement(react_native_1.View, { style: { flex: 1 } }),
                 react_1.default.createElement(Button_1.Button, { text: cancelBtnText, containerStyle: [button, buttonCancel, cancelBtnStyle], textStyle: buttonCancelText, onPress: this.onClosed.bind(this) }),
-                react_1.default.createElement(Button_1.Button, { text: rateBtnText, containerStyle: [button, rateBtnStyle], onPress: this.sendRate.bind(this) }))));
+                react_1.default.createElement(Button_1.Button, { text: rateBtnText, containerStyle: [button, primaryBtnStyle], onPress: this.sendRate.bind(this) }))));
     }
     renderContactFormView() {
         const { buttonContainer, button } = RateModal_1.RateModalStyles;
-        const { commentPlaceholderText, sendBtnText } = this.props;
+        const { commentPlaceholderText, sendBtnText, primaryBtnStyle, textInputStyle } = this.props;
         return (react_1.default.createElement(react_1.default.Fragment, null,
-            react_1.default.createElement(TextBox_1.TextBox, { containerStyle: [RateModal_1.RateModalStyles.textBox], textStyle: { paddingVertical: 5 }, value: this.state.review, placeholder: commentPlaceholderText, multiline: true, autoFocus: true, onChangeText: (value) => this.setState({ review: value, reviewError: false }) }),
+            react_1.default.createElement(TextBox_1.TextBox, { containerStyle: [RateModal_1.RateModalStyles.textBox, textInputStyle], textStyle: { paddingVertical: 5 }, value: this.state.review, placeholder: commentPlaceholderText, multiline: true, autoFocus: true, onChangeText: (value) => this.setState({ review: value, reviewError: false }) }),
             react_1.default.createElement(react_native_1.View, null, this.state.reviewError && this.renderReviewError()),
             react_1.default.createElement(react_native_1.View, { style: buttonContainer },
                 react_1.default.createElement(react_native_1.View, { style: { flex: 1 } }),
-                react_1.default.createElement(Button_1.Button, { text: sendBtnText, containerStyle: button, onPress: this.sendContactUsForm.bind(this) }))));
+                react_1.default.createElement(Button_1.Button, { text: sendBtnText, containerStyle: [button, primaryBtnStyle], onPress: this.sendContactUsForm.bind(this) }))));
     }
     renderReviewError() {
         const { errorText } = RateModal_1.RateModalStyles;
@@ -106,7 +106,7 @@ class RateModal extends react_1.Component {
                 react_native_1.Linking.openURL(iTunesStoreUrl) :
                 react_native_1.Linking.openURL(playStoreUrl);
             this.setState({ isModalOpen: false });
-            onSendReview();
+            onSendReview && onSendReview();
         }
         else {
             this.setState({ showContactForm: true });

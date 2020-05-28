@@ -19,7 +19,8 @@ export interface IProps {
     iTunesStoreUrl?: string;
     style: ViewStyle;
     cancelBtnStyle: ViewStyle;
-    rateBtnStyle: ViewStyle;
+    primaryBtnStyle: ViewStyle;
+    textInputStyle: ViewStyle;
     starLabels: string[];
     isTransparent: boolean;
 }

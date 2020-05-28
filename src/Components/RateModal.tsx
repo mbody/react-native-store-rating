@@ -93,7 +93,7 @@ export class RateModal extends Component<IProps, IState> {
 
 	private renderRatingView(): JSX.Element {
 		const { title, buttonContainer, button, buttonCancel, buttonCancelText } = RateModalStyles;
-		const { starLabels, isVisible, cancelBtnText, totalStarCount, defaultStars, rateBtnText, modalTitle, rateBtnStyle, cancelBtnStyle } = this.props;
+		const { starLabels, isVisible, cancelBtnText, totalStarCount, defaultStars, rateBtnText, modalTitle, primaryBtnStyle, cancelBtnStyle } = this.props;
 
 		return (
 			<React.Fragment>
@@ -114,7 +114,7 @@ export class RateModal extends Component<IProps, IState> {
 						textStyle={buttonCancelText}
 						onPress={this.onClosed.bind(this)}
 					/>
-					<Button text={rateBtnText} containerStyle={[button,rateBtnStyle]} onPress={this.sendRate.bind(this)} />
+					<Button text={rateBtnText} containerStyle={[button,primaryBtnStyle]} onPress={this.sendRate.bind(this)} />
 				</View>
 			</React.Fragment>
 		);
@@ -122,12 +122,12 @@ export class RateModal extends Component<IProps, IState> {
 
 	private renderContactFormView(): JSX.Element {
 		const { buttonContainer, button } = RateModalStyles;
-		const { commentPlaceholderText, sendBtnText } = this.props;
+		const { commentPlaceholderText, sendBtnText, primaryBtnStyle, textInputStyle } = this.props;
 
 		return (
 			<React.Fragment>
 				<TextBox
-					containerStyle={[RateModalStyles.textBox]}
+					containerStyle={[RateModalStyles.textBox, textInputStyle]}
 					textStyle={{ paddingVertical: 5 }}
 					value={this.state.review}
 					placeholder={commentPlaceholderText}
@@ -140,7 +140,7 @@ export class RateModal extends Component<IProps, IState> {
 				</View>
 				<View style={buttonContainer}>
 					<View style={{ flex: 1 }}></View>
-					<Button text={sendBtnText} containerStyle={button} onPress={this.sendContactUsForm.bind(this)} />
+					<Button text={sendBtnText} containerStyle={[button, primaryBtnStyle]} onPress={this.sendContactUsForm.bind(this)} />
 				</View>
 			</React.Fragment>
 		);
@@ -173,7 +173,7 @@ export class RateModal extends Component<IProps, IState> {
 				Linking.openURL(iTunesStoreUrl) :
 				Linking.openURL(playStoreUrl);
         this.setState({ isModalOpen: false });
-        onSendReview();
+		onSendReview && onSendReview();
 		} else {
 			this.setState({ showContactForm: true });
 		}

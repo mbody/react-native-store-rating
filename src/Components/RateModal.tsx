@@ -93,7 +93,7 @@ export class RateModal extends Component<IProps, IState> {
 
 	private renderRatingView(): JSX.Element {
 		const { title, buttonContainer, button, buttonCancel, buttonCancelText } = RateModalStyles;
-		const { starLabels, isVisible, cancelBtnText, totalStarCount, defaultStars, rateBtnText, modalTitle } = this.props;
+		const { starLabels, isVisible, cancelBtnText, totalStarCount, defaultStars, rateBtnText, modalTitle, rateBtnStyle, cancelBtnStyle } = this.props;
 
 		return (
 			<React.Fragment>
@@ -110,11 +110,11 @@ export class RateModal extends Component<IProps, IState> {
 					<View style={{ flex: 1 }}></View>
 					<Button
 						text={cancelBtnText}
-						containerStyle={[button, buttonCancel]}
+						containerStyle={[button, buttonCancel, cancelBtnStyle]}
 						textStyle={buttonCancelText}
 						onPress={this.onClosed.bind(this)}
 					/>
-					<Button text={rateBtnText} containerStyle={button} onPress={this.sendRate.bind(this)} />
+					<Button text={rateBtnText} containerStyle={[button,rateBtnStyle]} onPress={this.sendRate.bind(this)} />
 				</View>
 			</React.Fragment>
 		);

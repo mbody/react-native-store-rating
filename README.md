@@ -163,6 +163,8 @@ export default class example extends Component {
 | **isModalOpen** | `boolean`  | Control if the modal open or not. | `false` | 
 | **storeRedirectThreshold** | `number`  | ? | `3` | 
 | **style** | `Object`  | An object containing the styles objects to style the modal. | `example:`<br>`{ backgroundColor: #000, paddingHorizontal: 30 }` | 
+| **rateBtnStyle** | `Object`  | An object containing the styles objects to style the Rate button. | `example:`<br>`{ backgroundColor: #ff9b1e}` | 
+| **cancelBtnStyle** | `Object`  | An object containing the styles objects to style the Cancel button. | `example:`<br>`{ color: #ff9b1e}` | 
 
 <br/>
 

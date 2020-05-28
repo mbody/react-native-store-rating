@@ -12,11 +12,14 @@ export interface IProps {
     sendBtnText: string;
     storeRedirectThreshold: number;
     onStarSelected: (e: number) => void;
+    onSendReview: () => void;
     onClosed: () => void;
     sendContactUsForm: (state: IState) => void;
     playStoreUrl?: string;
     iTunesStoreUrl?: string;
     style: ViewStyle;
+    cancelBtnStyle: ViewStyle;
+    rateBtnStyle: ViewStyle;
     starLabels: string[];
     isTransparent: boolean;
 }
